@@ -102,7 +102,7 @@ function fetchNews(city, elementId) {
 
 function displayNews(articles, elementId) {
     const newsContainer = document.getElementById(elementId);
-    if (articles.length > 0) {
+    if (Array.isArray(articles) && articles.length > 0) {
         const newsHtml = articles.map(article => `
             <div class="news-article">
                 <h4><a href="${article.url}" target="_blank">${article.title}</a></h4>
