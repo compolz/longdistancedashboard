@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Long-Distance Dashboard</title>
+    
+    <!-- Include Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Add your API keys if necessary -->
+    <script>
+        const weatherApiKey = 'YOUR_WEATHER_API_KEY'; // Replace with your WeatherAPI key
+        const newsApiKey = 'YOUR_NEWS_API_KEY'; // Replace with your NewsAPI key
+    </script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Long-Distance Dashboard</h1>
+        <p>Get updates for Diana and Gurleen's Area</p>
+    </header>
+
+    <!-- Announcement Modal -->
+<div id="announcementModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>Announcement</h2>
+        <p>I love you, I'm sorry for not thinking about good gifts. I hope this makes up for it &lt;3</p>
+    </div>
+</div>
+
+
+    <!-- Weather Display Section -->
+    <section id="weather-display">
+        <h2>Weather Information</h2>
+        <button id="getWeatherBtn">Refresh Weather</button>
+        <div id="weather-data">
+            <!-- Weather data for Silver Spring and Solon will be displayed here -->
+        </div>
+    </section>
+
+    <!-- New Section for Temperature Differences and News -->
+    <section id="comparison-section">
+        <h2>Temperature Difference & Latest News</h2>
+        <div id="comparison-data">
+            <!-- Temperature difference and news articles will be displayed here -->
+        </div>
+    </section>
+
+    
+    <section id="map-section">
+    <h2>Map View</h2>
+    <div id="map" style="height: 400px; width: 100%;"></div>
+    </section>
+
+
+    <!-- Footer Section -->
+    <footer>
+        <p>Weather data provided by WeatherAPI and news from NewsAPI</p>
+        <p>Made with love for Diana</p>
+    </footer>
+
+
+
+    <!-- JavaScript logic -->
+    <script src="script.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKwy73diFIqybvJEyBVfLVvpa0fOy0R6A&callback=initializeMap"></script>
+</body>
+</html>

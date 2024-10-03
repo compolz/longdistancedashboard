@@ -1,0 +1,295 @@
+/* General Styling */
+body {
+    font-family: 'Playfair Display', serif; /* Romantic font  */
+    background-color: #f9ecec; /* Soft pink background */
+    color: #5f4b66; /* Elegant purple for text */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    padding: 20px;
+    background-color: #f2b4b4; /* Soft rose color */
+    color: #ffffff;
+}
+
+h1, h2 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #882f6e; /* Deep rose for headers */
+}
+
+p {
+    font-size: 1.2em;
+}
+
+#weather-display {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#getWeatherBtn {
+    background-color: #ff66a1;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 40px; /* Added margin below the button for spacing */
+}
+
+#getWeatherBtn:hover {
+    background-color: #ff3d7f;
+    transform: scale(1.1);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+#weather-data {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.weather-card {
+    background-color: #ffffff;
+    border: 2px solid #882f6e;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.weather-card:hover {
+    transform: scale(1.05);
+}
+
+.weather-card h3 {
+    font-size: 1.8em;
+    color: #882f6e;
+}
+
+.weather-card img {
+    width: 80px;
+    height: 80px;
+}
+
+#comparison-section {
+    margin-top: 50px;
+}
+
+#comparison-data {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.comparison-card {
+    background-color: #ffffff;
+    border: 2px solid #882f6e;
+    border-radius: 15px;
+    padding: 20px;
+    width: 40%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.comparison-card h3 {
+    color: #882f6e;
+    font-size: 1.8em;
+}
+
+.news-card {
+    background-color: #ffffff;
+    border: 2px solid #882f6e;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.news-card h3 {
+    color: #882f6e;
+    font-size: 1.8em;
+}
+
+.news-article {
+    margin-bottom: 15px;
+}
+
+.news-article h4 {
+    font-size: 1.2em;
+    color: #882f6e;
+}
+
+.news-article a {
+    text-decoration: none;
+    color: #882f6e;
+}
+
+.news-article a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    margin-top: 50px;
+    background-color: #f2b4b4;
+    color: white;
+    padding: 20px;
+}
+
+/* Add subtle animation to the entire page */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+body {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+body {
+    font-family: 'Georgia', serif; /* Romantic font */
+    background-color: #f7f5f2;
+    color: #3c3c3c;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+#weather-data {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.weather-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.weather-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.comparison-card {
+    margin: 20px 0;
+}
+
+.news-card {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.news-panel {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 45%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.news-panel:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.news-article {
+    margin: 10px 0;
+}
+
+.news-article h4 {
+    font-size: 1.2em;
+}
+
+.news-article p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+button {
+    background-color: #ff6f61; /* Romantic button color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #ff4b3a; /* Darker shade on hover */
+    transform: scale(1.05);
+}
+
+.news-dropdown {
+    margin-top: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    max-height: 150px; /* Limit height for overflow */
+    overflow-y: auto; /* Add scroll if needed */
+    transition: all 0.3s;
+}
+
+.news-article {
+    margin: 10px 0;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    text-align: center;
+    font-family: 'Playfair Display', serif; /* Set the font to Playfair Display */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
