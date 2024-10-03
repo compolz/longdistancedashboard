@@ -108,7 +108,7 @@ function fetchNews(city, elementId) {
                 displayNews([], elementId); // Call displayNews with an empty array
             }
         })
-        .catch(error => console.error('Error fetching news:', error));
+        .catch(error => console.error('Error fetching news:', error);
 }
 
 function displayNews(articles, elementId) {
