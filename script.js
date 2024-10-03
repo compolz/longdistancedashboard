@@ -111,9 +111,9 @@ function fetchNews(city, elementId) {
         .catch(error => console.error('Error fetching news:', error));
 }
 
-
 function displayNews(articles, elementId) {
     const newsContainer = document.getElementById(elementId);
+    // Check if articles is defined and is an array
     if (Array.isArray(articles) && articles.length > 0) {
         const newsHtml = articles.map(article => `
             <div class="news-article">
@@ -126,7 +126,6 @@ function displayNews(articles, elementId) {
         newsContainer.innerHTML = '<p>No news articles available.</p>';
     }
 }
-
 
 // Function to initialize the Google Map
 function initializeMap() {
@@ -184,4 +183,3 @@ window.onload = function() {
         }
     }
 }
-
