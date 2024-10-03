@@ -93,12 +93,24 @@ function fetchNews(city, elementId) {
     const newsApiUrl = `https://newsapi.org/v2/everything?q=${encodeURIComponent(city)}&apiKey=${newsApiKey}&pageSize=3`;
 
     fetch(newsApiUrl)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
-            displayNews(data.articles, elementId);
+            // Check if articles exist in the response
+            if (data.articles && Array.isArray(data.articles)) {
+                displayNews(data.articles, elementId);
+            } else {
+                console.error('No articles found in the response:', data);
+                displayNews([], elementId); // Call displayNews with an empty array
+            }
         })
         .catch(error => console.error('Error fetching news:', error));
 }
+
 
 function displayNews(articles, elementId) {
     const newsContainer = document.getElementById(elementId);
