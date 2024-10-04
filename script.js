@@ -84,51 +84,49 @@ function calculateAndDisplayComparison() {
     comparisonSection.innerHTML = comparisonInfo;
 
     // Fetch news for both locations
-    fetchNews('Silver Spring, MD', 'news-silver-spring');
-    fetchNews('Cleveland, OH', 'news-cleveland');
+    fetchNews('Silver Spring', 'news-silver-spring');
+    fetchNews('Cleveland', 'news-cleveland');
 }
 
 function fetchNews(city, elementId) {
     const newsApiKey = '62b14d4ccdd74bc7d8730c0e67795991'; // Your GNews API key
     const newsApiUrl = `https://gnews.io/api/v4/search?q=${encodeURIComponent(city)}&token=${newsApiKey}&lang=en&max=3`;
 
+    console.log('Fetching news from URL:', newsApiUrl); // Log the URL for debugging
+
     fetch(newsApiUrl)
         .then(response => {
             if (!response.ok) {
-                // If the response is not okay, update the news container with a no news message
                 document.getElementById(elementId).innerHTML = '<p>No news articles available.</p>';
-                throw new Error('Network response was not ok');
+                console.error('Network response was not ok', response.status, response.statusText);
+                return; // Exit if there's an error
             }
             return response.json();
         })
         .then(data => {
             // Check if articles exist in the response
-            if (data.articles && Array.isArray(data.articles)) {
+            if (data && data.articles && Array.isArray(data.articles) && data.articles.length > 0) {
                 displayNews(data.articles, elementId);
             } else {
                 console.error('No articles found in the response:', data);
-                displayNews([], elementId); // Call displayNews with an empty array
+                document.getElementById(elementId).innerHTML = '<p>No news articles available.</p>';
             }
         })
-        .catch(error => console.error('Error fetching news:', error));
+        .catch(error => {
+            console.error('Error fetching news:', error);
+            document.getElementById(elementId).innerHTML = '<p>No news articles available.</p>';
+        });
 }
-
-
 
 function displayNews(articles, elementId) {
     const newsContainer = document.getElementById(elementId);
-    // Check if articles is defined and is an array
-    if (Array.isArray(articles) && articles.length > 0) {
-        const newsHtml = articles.map(article => `
-            <div class="news-article">
-                <h4><a href="${article.url}" target="_blank">${article.title}</a></h4>
-                <p>${article.description || 'No description available.'}</p>
-            </div>
-        `).join('');
-        newsContainer.innerHTML = newsHtml;
-    } else {
-        newsContainer.innerHTML = '<p>No news articles available.</p>';
-    }
+    const newsHtml = articles.map(article => `
+        <div class="news-article">
+            <h4><a href="${article.url}" target="_blank">${article.title}</a></h4>
+            <p>${article.description || 'No description available.'}</p>
+        </div>
+    `).join('');
+    newsContainer.innerHTML = newsHtml;
 }
 
 // Function to initialize the Google Map
