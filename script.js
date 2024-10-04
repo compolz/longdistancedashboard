@@ -89,8 +89,8 @@ function calculateAndDisplayComparison() {
 }
 
 function fetchNews(city, elementId) {
-    const newsApiKey = '54da95d1df7141cc9b43a75838d7278c'; // Your NewsAPI key
-    const newsApiUrl = `https://newsapi.org/v2/everything?q=${encodeURIComponent(city)}&apiKey=${newsApiKey}&pageSize=3`;
+    const newsApiKey = '62b14d4ccdd74bc7d8730c0e67795991'; // Your GNews API key
+    const newsApiUrl = `https://gnews.io/api/v4/search?q=${encodeURIComponent(city)}&token=${newsApiKey}&lang=en&max=3`;
 
     fetch(newsApiUrl)
         .then(response => {
@@ -110,6 +110,7 @@ function fetchNews(city, elementId) {
         })
         .catch(error => console.error('Error fetching news:', error));
 }
+
 
 function displayNews(articles, elementId) {
     const newsContainer = document.getElementById(elementId);
