@@ -293,3 +293,109 @@ button:hover {
     cursor: pointer;
 }
 
+#content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Weather Section */
+#weather-display {
+    flex: 2;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+
+/* General styling for the layout */
+#content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+/* Styling for the weather display section */
+#weather-display {
+    flex: 1;
+    margin-right: 20px;
+}
+
+/* Styling for the developer access section (smaller size) */
+#developer-access {
+    flex: 0 0 300px; /* Fixed width of 300px */
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-left: 20px; /* Space it from the weather section */
+}
+
+/* Styling for the "Enter Key" input field to make it thicker and cartoony */
+#developer-access input[type="password"] {
+    width: 90%; /* Adjust the width */
+    padding: 10px; /* Thicker padding */
+    margin: 10px 0;
+    border: 4px solid #f2b4b4; /* Thick border with a vibrant, cartoony color (Tomato) */
+    border-radius: 10px; /* Rounded corners for a softer, cartoony feel */
+    font-size: 18px; /* Slightly larger font for a cartoon look */
+    background-color: #fff2ee; /* Lighter background color to add a playful touch */
+    outline: none; /* Remove the default focus outline */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive; /* Use a cartoony font */
+    transition: all 0.3s ease; /* Smooth transition for hover and focus effects */
+}
+
+/* Hover and focus effects */
+#developer-access input[type="password"]:hover,
+#developer-access input[type="password"]:focus {
+    background-color: #ffffff; /* Change background on hover for a playful effect (Bisque color) */
+    box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.3); /* Slightly larger shadow on hover */
+}
+
+
+#developer-access button {
+    background-color: #ff66a1; /* Same background color as Refresh Weather button */
+    color: white;
+    border: none;
+    padding: 15px 30px; /* Same padding as the Refresh Weather button */
+    font-size: 1.2em;
+    border-radius: 25px; /* Same rounded corners */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-top: 10px; /* Spacing above the button */
+}
+
+#developer-access button:hover {
+    background-color: #ff3d7f; /* Same hover effect as Refresh Weather button */
+    transform: scale(1.1);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Same shadow effect on hover */
+}
+
+#developer-access p {
+    font-size: 14px; /* Smaller text */
+    margin-top: 10px;
+}
+
+/* Developer section styling */
+#developer-section {
+    background-color: #f9f9f9;
+    padding: 15px; /* Reduced padding */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    display: none;
+}
+
+#developer-section h2 {
+    font-size: 18px; /* Slightly smaller font */
+}
+
+#developer-section p {
+    font-size: 14px; /* Slightly smaller font */
+}
+
+
+
