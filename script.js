@@ -240,6 +240,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load updates from localStorage on page load
     const storedUpdates = JSON.parse(localStorage.getItem('updates')) || [];
     updates = storedUpdates; // Initialize updates from localStorage
+    updates.push('1 - Added Developer Portal + Updates section');
+    updates.push('2 - Added timer to refresh weather button to avoid API overcall');
     displayUpdates(); // Display stored updates
 
     // Add event listener for the add update button
