@@ -35,14 +35,34 @@
 </div>
 
 
-    <!-- Weather Display Section -->
-    <section id="weather-display">
-        <h2>Weather Information</h2>
-        <button id="getWeatherBtn">Refresh Weather</button>
-        <div id="weather-data">
-            <!-- Weather data for Silver Spring and Solon will be displayed here -->
-        </div>
+    <!-- Content Wrapper for side-by-side layout -->
+    <section id="content-wrapper">
+        <!-- Weather Display Section -->
+        <section id="weather-display">
+            <h2>Weather Information</h2>
+            <button id="getWeatherBtn">Refresh Weather</button>
+            <div id="weather-data">
+                <!-- Weather data for Silver Spring and Solon will be displayed here -->
+            </div>
+        </section>
+
+        <!-- Developer Access Section -->
+        <section id="developer-access">
+            <h2>Developer Access</h2>
+            <label for="dev-key">Enter Developer Key:</label>
+            <input type="password" id="dev-key" placeholder="Enter key">
+            <button id="checkKeyBtn">Submit</button>
+            <p id="access-message" style="color: red;"></p>
+        </section>
+
+        <!-- Developer Section (Initially Hidden) -->
+        <section id="developer-section" style="display: none;">
+            <h2>Developer Section</h2>
+            <p>This section is only visible to authorized users.</p>
+            <!-- Add any developer-specific content here -->
+        </section>
     </section>
+
 
     <!-- New Section for Temperature Differences and News -->
     <section id="comparison-section">
@@ -61,7 +81,7 @@
 
     <!-- Footer Section -->
     <footer>
-        <p>Weather data provided by WeatherAPI and news from GNewsAPI</p>
+        <p>Weather data provided by WeatherAPI and news from NewsAPI</p>
         <p>Made with love for Diana</p>
     </footer>
 
