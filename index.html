@@ -26,14 +26,13 @@
     </header>
 
     <!-- Announcement Modal -->
-<div id="announcementModal" class="modal">
-    <div class="modal-content">
-        <span class="close" id="closeModal">&times;</span>
-        <h2>Announcement</h2>
-        <p>I love you, I'm sorry for not thinking about good gifts. I hope this makes up for it &lt;3</p>
+    <div id="announcementModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Announcement</h2>
+            <p>I love you, I'm sorry for not thinking about good gifts. I hope this makes up for it &lt;3</p>
+        </div>
     </div>
-</div>
-
 
     <!-- Content Wrapper for side-by-side layout -->
     <section id="content-wrapper">
@@ -48,21 +47,28 @@
 
         <!-- Developer Access Section -->
         <section id="developer-access">
-            <h2>Developer Access</h2>
+            <h2>Developer Portal</h2>
             <label for="dev-key">Enter Developer Key:</label>
-            <input type="password" id="dev-key" placeholder="Enter key">
+            <input type="password" id="dev-key" placeholder="Enter Key">
             <button id="checkKeyBtn">Submit</button>
             <p id="access-message" style="color: red;"></p>
         </section>
 
         <!-- Developer Section (Initially Hidden) -->
-        <section id="developer-section" style="display: none;">
-            <h2>Developer Section</h2>
+        <section id="developer-section" style="display: none; position: relative;">
+            <h2>Developer Portal</h2>
             <p>This section is only visible to authorized users.</p>
             <!-- Add any developer-specific content here -->
+            <div id="update-updates-section">
+            <h3>Update Log</h3>
+            <input type="text" id="new-update" placeholder="Enter Update">
+            <button id="addUpdateBtn">Add</button>
+            <button id="deleteUpdateBtn">Delete</button>
+            <div id="update-message"></div>
+            </div>
+            <button id="closeDeveloperSectionBtn">Close Developer Portal</button>
         </section>
     </section>
-
 
     <!-- New Section for Temperature Differences and News -->
     <section id="comparison-section">
@@ -72,12 +78,18 @@
         </div>
     </section>
 
-    
     <section id="map-section">
-    <h2>Map View</h2>
-    <div id="map" style="height: 400px; width: 100%;"></div>
+        <h2>Map View</h2>
+        <div id="map" style="height: 400px; width: 100%;"></div>
     </section>
 
+    <div id="updates-section">
+        <h2>Updates</h2>
+        <div id="updates-list-container">
+            <ul id="updates-list"></ul>
+        </div>
+    </div>
+    
 
     <!-- Footer Section -->
     <footer>
@@ -85,9 +97,7 @@
         <p>Made with love for Diana</p>
     </footer>
 
-
-
-    <!-- JavaScript logic -->
+    <!-- External JavaScript -->
     <script src="script.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKwy73diFIqybvJEyBVfLVvpa0fOy0R6A&callback=initializeMap"></script>
 </body>
