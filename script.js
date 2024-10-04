@@ -185,3 +185,14 @@ window.onload = function() {
         }
     }
 }
+
+function isUserAuthorized() {
+    // Assume 'developerUser' is the username of the person allowed to see the developer section
+    const authorizedUser = 'developerUser'; 
+    
+    // Check if the current user is the developer
+    const currentUser = localStorage.getItem('username'); 
+    
+    // Return true if the user is authorized
+    return currentUser === authorizedUser;
+}
