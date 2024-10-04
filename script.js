@@ -1,4 +1,5 @@
 let weatherSilverSpring, weatherSolon;
+let refreshTimeout; // Variable to store the timeout ID
 
 document.addEventListener('DOMContentLoaded', function() {
     // Automatically fetch weather data on page load
@@ -14,18 +15,51 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Set up event listener for the refresh button
-    document.getElementById('getWeatherBtn').addEventListener('click', function() {
+    const refreshButton = document.getElementById('getWeatherBtn');
+    refreshButton.addEventListener('click', function() {
+        // If the button is disabled, do nothing
+        if (refreshButton.disabled) return;
+
         // Clear previous weather data and news articles to prevent duplicate entries
         document.getElementById('weather-data').innerHTML = '';
         document.getElementById('comparison-data').innerHTML = '';
 
         // Fetch weather again for both locations
+        const locations = [
+            { name: 'Silver Spring', state: 'MD', label: "Diana's Weather" },
+            { name: 'Solon', state: 'OH', label: "Gurleen's Weather" }
+        ];
         locations.forEach(location => {
             const city = `${location.name},${location.state}`;
             fetchWeather(city, location.label);
         });
+
+        // Disable the button and start the timer
+        refreshButton.disabled = true;
+        refreshButton.style.backgroundColor = '#ccc'; // Change button color to grey
+
+        let countdown = 60; // Countdown starting at 60 seconds
+        refreshButton.textContent = `Please wait ${countdown} seconds`;
+
+        // Set a timer to re-enable the button after 1 minute (60000 milliseconds)
+        refreshTimeout = setInterval(() => {
+            countdown--;
+            refreshButton.textContent = `Please wait ${countdown} seconds`;
+            if (countdown <= 0) {
+                clearInterval(refreshTimeout);
+                refreshButton.disabled = false;
+                refreshButton.style.backgroundColor = ''; // Reset button color
+                refreshButton.textContent = 'Refresh Weather';
+            }
+        }, 1000); // Update every second
+    });
+
+    // Set up event listener for the close developer portal button
+    document.getElementById('closeDeveloperSectionBtn').addEventListener('click', function() {
+        document.getElementById('developer-section').style.display = 'none'; // Hide the developer section
     });
 });
+
 
 function fetchWeather(city, label) {
     const apiKey = '7d4e14d79b5e4c6a857221732240310'; // Your Weather API key
@@ -186,13 +220,60 @@ window.onload = function() {
     }
 }
 
-function isUserAuthorized() {
-    // Assume 'developerUser' is the username of the person allowed to see the developer section
-    const authorizedUser = 'developerUser'; 
-    
-    // Check if the current user is the developer
-    const currentUser = localStorage.getItem('username'); 
-    
-    // Return true if the user is authorized
-    return currentUser === authorizedUser;
+document.getElementById('checkKeyBtn').addEventListener('click', function() {
+    const enteredKey = document.getElementById('dev-key').value; // Get the value from the input field
+
+    // Check if the entered key matches the hard-coded key
+    if (enteredKey === 'ilovediana') {
+        document.getElementById('developer-section').style.display = 'block'; // Show the developer section
+        document.getElementById('access-message').innerText = 'Success: Valid Key'; // Success message
+        document.getElementById('access-message').style.color = 'green'; // Change text color to green
+    } else {
+        document.getElementById('access-message').innerText = 'ERROR: Invalid Key'; // Deny message
+        document.getElementById('access-message').style.color = 'red'; // Change text color to red
+    }
+});
+
+let updates = []; // Array to store updates
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Load updates from localStorage on page load
+    const storedUpdates = JSON.parse(localStorage.getItem('updates')) || [];
+    updates = storedUpdates; // Initialize updates from localStorage
+    displayUpdates(); // Display stored updates
+
+    // Add event listener for the add update button
+    document.getElementById('addUpdateBtn').addEventListener('click', function() {
+        const newUpdate = document.getElementById('new-update').value; // Get the value from the input field
+        if (newUpdate) {
+            updates.push(newUpdate); // Add the new update to the updates array
+            localStorage.setItem('updates', JSON.stringify(updates)); // Save updates to localStorage
+            displayUpdates(); // Update the displayed list
+            document.getElementById('update-message').innerText = `Update added: "${newUpdate}".`;
+            document.getElementById('new-update').value = ''; // Clear the input field
+        } else {
+            document.getElementById('update-message').innerText = 'Please enter an update.'; // Show error message
+        }
+    });
+
+    // Add event listener for the delete update button
+    document.getElementById('deleteUpdateBtn').addEventListener('click', function() {
+        const lastUpdate = updates.pop(); // Remove the last update from the array
+        if (lastUpdate) {
+            localStorage.setItem('updates', JSON.stringify(updates)); // Update localStorage
+            displayUpdates(); // Update the displayed list
+            document.getElementById('update-message').innerText = `Deleted update: "${lastUpdate}"`; // Show confirmation message
+        } else {
+            document.getElementById('update-message').innerText = 'No updates to delete.'; // Show error message
+        }
+    });
+});
+
+// Function to display updates
+function displayUpdates() {
+    const updatesList = document.getElementById('updates-list');
+    updatesList.innerHTML = updates.map(update => `<li>${update}</li>`).join('');
 }
+
+
+
