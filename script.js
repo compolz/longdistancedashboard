@@ -95,6 +95,8 @@ function fetchNews(city, elementId) {
     fetch(newsApiUrl)
         .then(response => {
             if (!response.ok) {
+                // If the response is not okay, update the news container with a no news message
+                document.getElementById(elementId).innerHTML = '<p>No news articles available.</p>';
                 throw new Error('Network response was not ok');
             }
             return response.json();
@@ -110,6 +112,7 @@ function fetchNews(city, elementId) {
         })
         .catch(error => console.error('Error fetching news:', error));
 }
+
 
 
 function displayNews(articles, elementId) {
